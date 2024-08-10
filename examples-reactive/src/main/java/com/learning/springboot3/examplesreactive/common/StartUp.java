@@ -25,7 +25,7 @@ public class StartUp {
 
             template
                     .insert(EmployeeEntity.class)
-                    .using(new EmployeeEntity("Alex Berlin", "Panda"))
+                    .using(new EmployeeEntity("Alex", "Panda"))
                     .as(StepVerifier::create)
                     .expectNextCount(1)
                     .verifyComplete();

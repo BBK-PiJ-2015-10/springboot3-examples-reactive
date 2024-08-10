@@ -11,11 +11,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-public class ApiReactiveController {
+public class EmployeeRestReactiveController {
 
     private final EmployeeService employeeService;
 
-    public ApiReactiveController(EmployeeService employeeService) {
+    public EmployeeRestReactiveController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 

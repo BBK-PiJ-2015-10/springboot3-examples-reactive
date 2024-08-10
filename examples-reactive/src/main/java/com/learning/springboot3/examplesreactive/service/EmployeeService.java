@@ -10,4 +10,7 @@ public interface EmployeeService {
 
     Mono<EmployeeDto> save(EmployeeDto employeeDto);
 
+    Mono<EmployeeDto> getByName(String name);
+
+
 }

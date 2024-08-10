@@ -38,7 +38,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .map(ee -> employeeMapper.toDto(ee));
     }
 
-//    @PostConstruct
+    @Override
+    public Mono<EmployeeDto> getByName(String name) {
+        return employeeRepository.findByName(name)
+                .map(ee -> employeeMapper.toDto(ee))
+                ;
+    }
+
+    //    @PostConstruct
 //    private void LoadEmployees() {
 //        var employee1 = new EmployeeDto("alice", "Software-DA");
 //        var employee2 = new EmployeeDto("Alex", "Software-Dev");
