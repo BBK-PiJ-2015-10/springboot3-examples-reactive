@@ -1,15 +1,13 @@
 package com.learning.springboot3.examplesreactive.service;
 
-import com.learning.springboot3.examplesreactive.dto.Employee;
+import com.learning.springboot3.examplesreactive.dto.EmployeeDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 public interface EmployeeService {
 
-    Flux<Employee> getAll();
+    Flux<EmployeeDto> getAll();
 
-    Mono<Employee> save(Employee employee);
+    Mono<EmployeeDto> save(EmployeeDto employeeDto);
 
 }
