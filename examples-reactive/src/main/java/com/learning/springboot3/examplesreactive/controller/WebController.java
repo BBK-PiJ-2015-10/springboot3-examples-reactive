@@ -27,7 +27,7 @@ public class WebController {
                 .map(employees ->
                         Rendering.view("index")
                                 .modelAttribute("employees", employees)
-                                .modelAttribute("newEmployee",new EmployeeDto("",""))
+                                .modelAttribute("newEmployee",new EmployeeDto(null,"",""))
                                 .build()
                 );
 

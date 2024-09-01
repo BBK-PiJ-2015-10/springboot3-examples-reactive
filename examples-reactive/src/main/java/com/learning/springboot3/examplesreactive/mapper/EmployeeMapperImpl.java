@@ -9,7 +9,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
 
     @Override
     public EmployeeDto toDto(EmployeeEntity employeeEntity) {
-        return new EmployeeDto(employeeEntity.getName(), employeeEntity.getRole());
+        return new EmployeeDto(employeeEntity.getId(),employeeEntity.getName(), employeeEntity.getRole());
     }
 
     @Override

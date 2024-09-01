@@ -1,6 +1,10 @@
 package com.learning.springboot3.examplesreactive.common;
 
 import com.learning.springboot3.examplesreactive.entity.EmployeeEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +14,11 @@ import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 
 @Configuration
 public class StartUp {
+
+    private final Integer threadPoolSize = 5;
+    private final Integer taskQueueSize = 5;
+
+    Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Bean
     CommandLineRunner initDatabase(R2dbcEntityTemplate template) {
@@ -46,6 +55,12 @@ public class StartUp {
                     .verifyComplete();
 
         };
+    }
+
+    @Bean
+    public Scheduler publishEventScheduler() {
+        logger.info("Creates a messagingScheduler with connectionPoolSize = {}", threadPoolSize);
+        return Schedulers.newBoundedElastic(threadPoolSize, taskQueueSize, "publish-pool");
     }
 
 
